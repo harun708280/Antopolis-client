@@ -4,6 +4,7 @@ import { Button } from '../ui/button'; // Assuming this path is correct
 import Image from 'next/image';
 import { AddCategory } from './AddCategory';
 import axios from 'axios';
+import { AddFood } from './AddFood';
 
 const Product = () => {
   const [dishes, setDishes] = useState([]);
@@ -46,8 +47,7 @@ const Product = () => {
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
-    // You might want to refetch dishes based on the selected category here
-    // or filter the existing dishes array
+    
   };
 
   const handleAddCategoryOpen = () => {
@@ -87,12 +87,8 @@ const Product = () => {
             ))}
           </div>
           <div className="space-x-5">
-            <Button
-              className="px-4 py-2 rounded-full text-sm font-medium bg-[#2C2C2C] text-white "
-              onClick={handleAddCategoryOpen}
-            >
-              Add Food
-            </Button>
+            
+            <AddFood/>
             <AddCategory onClose={handleAddCategoryClose} />
           </div>
         </div>
