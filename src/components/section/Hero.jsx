@@ -72,7 +72,7 @@ const Hero = () => {
 
   return (
     <div
-      className="relative overflow-hidden z-10 min-h-screen flex flex-col transition-colors duration-500"
+      className="relative px-12 overflow-hidden z-10 min-h-screen flex flex-col transition-colors duration-500"
       style={{ backgroundColor: imageData[selected].bgColor }}
     >
       <div className="absolute top-0 left-0 w-[550px] h-[600px] bg-white/10 rounded-br-[90%] z-0"></div>
@@ -97,11 +97,11 @@ const Hero = () => {
           <h2 className="text-[96px] font-montserrat font-normal mb-3 text-white">
             BREAKFAST
           </h2>
-          <p className="relative z-10 font-bold text-xs leading-tight mb-6 text-white">
-            <strong>
+          <p className="relative  z-10 font-semibold text-[20px] max-w-4xl leading-tight mb-6 text-white">
+            
               Breakfast, often referred to as the ‘most important meal of the
               day’,
-            </strong>{" "}
+            
             provides essential nutrients to kick start our day. It includes a
             variety of foods, like fruits, cereals, dairy products, and proteins,
             that contribute to a balanced diet.
@@ -119,7 +119,7 @@ const Hero = () => {
                     src={item.thumb}
                     alt={`Thumbnail ${index}`}
                     
-                    className="object-cover w-40 h-40 rounded-full border"
+                    className="object-cover w-40 h-40 rounded-full"
                   />
                 </div>
                 {selected === index && (
@@ -130,8 +130,8 @@ const Hero = () => {
           </div>
         </section>
 
-        <section className="-right-[0%]   absolute  z-40 flex-1 max-w-[1/2] ">
-          <div className="  flex justify-end w-[624px] h-[624px] ">
+        <section className="-right-[0%] bottom-[2%]  absolute  z-40 flex-1 max-w-[1/2] ">
+          <div className="  flex justify-end w-[600px] h-[600px] ">
             <AnimatePresence custom={getDirection()} mode="wait">
               <motion.div
                 key={selected}

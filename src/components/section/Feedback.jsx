@@ -1,30 +1,30 @@
-'use client'
+"use client";
 
+"use client";
 
-'use client'
-
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const feedbacks = [
   {
-    name: 'Tayyab Sohail',
-    role: 'UX/UI Designer',
+    name: "Tayyab Sohail",
+    role: "UX/UI Designer",
     feedback: `Fresh, flavorful, and just the right amount of heat. The tuna was buttery, the rice well-seasoned, and the chili mayo added a great kick. A must-try for sushi lovers.`,
-    image: 'https://i.pravatar.cc/100?img=1',
+    image: "https://i.pravatar.cc/100?img=1",
   },
   {
-    name: 'Ayesha Khan',
-    role: 'Frontend Developer',
+    name: "Ayesha Khan",
+    role: "Frontend Developer",
     feedback: `Absolutely loved it! The presentation was stunning and the flavors were even better. Will definitely order again.`,
-    image: 'https://i.pravatar.cc/100?img=2',
+    image: "https://i.pravatar.cc/100?img=2",
   },
   {
-    name: 'John Doe',
-    role: 'Product Manager',
+    name: "John Doe",
+    role: "Product Manager",
     feedback: `A delightful experience overall. The freshness of the ingredients really stood out.`,
-    image: 'https://i.pravatar.cc/100?img=3',
+    image: "https://i.pravatar.cc/100?img=3",
   },
 ];
 
@@ -65,14 +65,12 @@ const Feedback = () => {
   };
 
   return (
-    <div className="max-w-[1299px] mx-auto p-4 mt-20">
+    <div className="max-w-[1299px] flex gap-12 justify-between items-center mx-auto px-4 mt-20">
       <div className="max-w-2xl   relative ">
-      
         <h2 className="text-4xl sm:text-5xl font-bold mb-8">
           Customer <span className="text-red-600">Feedback</span>
         </h2>
 
-      
         <div className="absolute left-0 top-1/2 transform -translate-y-1/2 sm:hidden z-10">
           <button onClick={handlePrev}>
             <ChevronLeft className="w-6 h-6 text-gray-600" />
@@ -84,7 +82,6 @@ const Feedback = () => {
           </button>
         </div>
 
-        
         <div className="min-h-[120px] relative">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -104,9 +101,7 @@ const Feedback = () => {
           </AnimatePresence>
         </div>
 
-       
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          
           <div className="flex items-center gap-4">
             <img
               src={feedbacks[current].image}
@@ -114,12 +109,13 @@ const Feedback = () => {
               className="w-12 h-12 rounded-full object-cover"
             />
             <div className="text-left">
-              <h4 className="font-bold text-red-600">{feedbacks[current].name}</h4>
+              <h4 className="font-bold text-red-600">
+                {feedbacks[current].name}
+              </h4>
               <p className="text-sm text-gray-700">{feedbacks[current].role}</p>
             </div>
           </div>
 
-         
           <div className="flex space-x-2 mt-4 sm:mt-0">
             {feedbacks.map((_, index) => (
               <span
@@ -129,12 +125,22 @@ const Feedback = () => {
                   setCurrent(index);
                 }}
                 className={`w-3 h-3 rounded-full cursor-pointer transition-all ${
-                  current === index ? 'bg-red-600' : 'bg-gray-300'
+                  current === index ? "bg-red-600" : "bg-gray-300"
                 }`}
               ></span>
             ))}
           </div>
         </div>
+      </div>
+      <div
+        className=""
+        style={{
+          backgroundImage: `url('/Vector 2.png')`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <Image src={"/Chef making .png"} height={600} width={600}></Image>
       </div>
     </div>
   );
