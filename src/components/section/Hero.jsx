@@ -84,7 +84,7 @@ const Hero = () => {
 
   return (
     <motion.div
-      className="relative px-4 md:px-12 overflow-hidden z-10 min-h-screen flex flex-col"
+      className="relative px-4 md:px-12  overflow-hidden z-10 min-h-screen flex flex-col"
       animate={{ backgroundColor: imageData[selected].bgColor }}
       transition={{ duration: 0.6 }}
     >
@@ -146,7 +146,7 @@ const Hero = () => {
           </div>
         </section>
 
-        <section className="absolute  w-full bottom-[20%] right-[4px] md:bottom-[5%] md:right-[20%] lg:bottom-[2%] lg:right-0 z-40  h-[200px] md:w-[400px] md:h-[400px] lg:w-[650px] lg:h-[650px]">
+        <section className="absolute -translate-y-1/2 md:-translate-y-1/5 lg:translate-y-0  w-full bottom-[20%] right-[4px] md:bottom-[5%] md:right-[20%] lg:bottom-[2%] lg:right-0 z-40  h-[235px] md:w-[400px] md:h-[400px] lg:w-[650px] lg:h-[650px] ">
           <div className="w-full h-full relative flex gap-4 items-center">
             <button
               onClick={() => {
@@ -196,7 +196,7 @@ const Hero = () => {
           </div>
         </section>
 
-        <div className="absolute bottom-0 z-10 flex md:hidden gap-1">
+        <div className="absolute bottom-[15%] z-10 flex md:hidden gap-1">
           {imageData.map((item, index) => {
             const isSelectable = Math.abs(index - selected) === 1;
             return (
