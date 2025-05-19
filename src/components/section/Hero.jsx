@@ -9,26 +9,26 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const imageData = [
   {
     id: 1,
-    thumb: "/hero1.png",
-    main: "/hero1.png",
+    thumb: "/hero13.png",
+    main: "/hero13.png",
     bgColor: "#8B0000",
   },
   {
     id: 2,
-    thumb: "/hero6.png",
-    main: "/hero6.png",
+    thumb: "/hero12.png",
+    main: "/hero12.png",
     bgColor: "#0a4669",
   },
   {
     id: 3,
-    thumb: "/hero1.png",
-    main: "/hero1.png",
+    thumb: "/hero14.png",
+    main: "/hero14.png",
     bgColor: "#953553",
   },
   {
     id: 4,
-    thumb: "/hero4..png",
-    main: "/hero4..png",
+    thumb: "/hero15.png",
+    main: "/hero15.png",
     bgColor: "#006666",
   },
 ];
@@ -104,7 +104,7 @@ const Hero = () => {
           <h2 className="text-5xl md:text-[96px] font-[400px] text-white leading-tight">
             BREAKFAST
           </h2>
-          <p className="relative z-10 font-medium text-base md:text-lg max-w-3xl leading-tight text-white">
+          <p className="relative z-10 font-medium text-base md:text-lg max-w-[720px] leading-tight text-white">
             Breakfast, often referred to as the ‘most important meal of the
             day’, provides essential nutrients to kick start our day. It
             includes a variety of foods, like fruits, cereals, dairy products,
@@ -118,7 +118,7 @@ const Hero = () => {
                 <div
                   key={item.id}
                   className={`flex flex-col items-center ${
-                    isSelectable ? "cursor-pointer opacity-100" : "opacity-60"
+                    isSelectable ? "cursor-pointer opacity-100" : "opacity-100"
                   }`}
                   onClick={() => handleSelect(index)}
                 >
@@ -146,7 +146,7 @@ const Hero = () => {
           </div>
         </section>
 
-        <section className="absolute bottom-[30%] md:bottom-[5%] md:right-[20%] lg:bottom-[2%] lg:right-0 z-40 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[550px] lg:h-[550px]">
+        <section className="absolute  w-full bottom-[16%] right-[4px] md:bottom-[5%] md:right-[20%] lg:bottom-[2%] lg:right-0 z-40  h-[200px] md:w-[400px] md:h-[400px] lg:w-[650px] lg:h-[650px]">
           <div className="w-full h-full relative flex gap-4 items-center">
             <button
               onClick={() => {
@@ -196,7 +196,7 @@ const Hero = () => {
           </div>
         </section>
 
-        <div className="relative z-10 flex md:hidden gap-1">
+        <div className="absolute bottom-0 z-10 flex md:hidden gap-1">
           {imageData.map((item, index) => {
             const isSelectable = Math.abs(index - selected) === 1;
             return (
