@@ -146,7 +146,7 @@ const Hero = () => {
           </div>
         </section>
 
-        <section className="absolute  w-full bottom-[16%] right-[4px] md:bottom-[5%] md:right-[20%] lg:bottom-[2%] lg:right-0 z-40  h-[200px] md:w-[400px] md:h-[400px] lg:w-[650px] lg:h-[650px]">
+        <section className="absolute  w-full bottom-[20%] right-[4px] md:bottom-[5%] md:right-[20%] lg:bottom-[2%] lg:right-0 z-40  h-[200px] md:w-[400px] md:h-[400px] lg:w-[650px] lg:h-[650px]">
           <div className="w-full h-full relative flex gap-4 items-center">
             <button
               onClick={() => {

@@ -122,7 +122,10 @@
   }
 }
 
-
+[data-placeholder] {
+  color: white !important;
+  opacity: 0.8;
+}
 
 /* Let Next.js handle width/height via 'fill' prop */
 

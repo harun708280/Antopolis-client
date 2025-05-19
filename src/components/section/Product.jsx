@@ -79,7 +79,7 @@ const Product = () => {
       </div>
 
       <div className="flex flex-wrap justify-between gap-2 mb-4 md:mt-12">
-        <div className="space-x-5">
+        <div className="space-x-5 space-y-3">
           {categories.map((category) => (
             <Button
               key={category}
@@ -94,7 +94,7 @@ const Product = () => {
             </Button>
           ))}
         </div>
-        <div className="space-x-5">
+        <div className="space-x-5 space-y-3">
           <AddFood onFoodAdded={fetchDishes} onCategoryAdded={fetchCategories} />
           <AddCategory onCategoryAdded={fetchCategories}  />
         </div>

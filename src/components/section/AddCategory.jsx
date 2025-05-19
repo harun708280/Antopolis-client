@@ -70,9 +70,9 @@ export function AddCategory({onCategoryAdded}) {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-2 py-4">
             <Input
-              placeholder="Enter category name"
+              placeholder="Name"
               {...register('categoryName')}
-              className="col-span-4 rounded-full !border-white"
+              className="col-span-4 rounded-full !border-white placeholder:text-white"
             />
             {errors.categoryName && (
               <p className="text-red-500 text-sm">

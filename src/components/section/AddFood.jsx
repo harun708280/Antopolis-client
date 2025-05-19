@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 
-export function AddFood({ onFoodAdded,onCategoryAdded }) {
+export function AddFood({ onFoodAdded, onCategoryAdded }) {
   const [categories, setCategories] = useState([]);
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -52,16 +52,14 @@ export function AddFood({ onFoodAdded,onCategoryAdded }) {
 
   const onSubmit = async (data) => {
     if (!image) {
-      toast.success('Image is required.', {
+      toast.success("Image is required.", {
         style: {
-          border: '1px solid red',
-          color: 'red',
+          border: "1px solid red",
+          color: "red",
         },
       });
       return;
     }
-
-    
 
     setUploading(true);
 
@@ -92,24 +90,22 @@ export function AddFood({ onFoodAdded,onCategoryAdded }) {
       );
 
       if (res.status === 200 || res.status === 201) {
-        toast.success('Food added successfully!', {
-        style: {
-          border: '1px solid red',
-          color: 'red',
-        },
-      });
-        
+        toast.success("Food added successfully!", {
+          style: {
+            border: "1px solid red",
+            color: "red",
+          },
+        });
+
         reset();
         setImage(null);
         onFoodAdded?.();
       }
     } catch (error) {
-      
-    
-      toast.error('Something went wrong while uploading.', {
+      toast.error("Something went wrong while uploading.", {
         style: {
-          border: '1px solid red',
-          color: 'red',
+          border: "1px solid red",
+          color: "red",
         },
       });
     } finally {
@@ -129,10 +125,10 @@ export function AddFood({ onFoodAdded,onCategoryAdded }) {
           <DialogTitle className="text-white">Add Food</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
+          <div className="grid grid-cols-4 items-center gap-4 text-white">
             <Input
-              placeholder="Enter food name"
-              className="col-span-4 rounded-full !border-2 !border-white/50 text-white placeholder-white"
+              placeholder="Food name"
+              className="col-span-4 rounded-full !border-2 !border-white/50 placeholder:text-white  text-white p"
               {...register("foodName", { required: "Food name is required" })}
             />
             {errors.foodName && (
@@ -149,8 +145,8 @@ export function AddFood({ onFoodAdded,onCategoryAdded }) {
                 clearErrors("category");
               }}
             >
-              <SelectTrigger className="col-span-4 rounded-full w-full text-white placeholder-white">
-                <SelectValue placeholder="Food Category" />
+              <SelectTrigger className="col-span-4 rounded-full w-full text-white bg-transparent border border-white/50">
+                <SelectValue placeholder="Food Category" className='placeholder:text-white' />
               </SelectTrigger>
               <SelectContent>
                 {categories.map((cat, index) => (
@@ -171,7 +167,7 @@ export function AddFood({ onFoodAdded,onCategoryAdded }) {
             <Input
               type="number"
               placeholder="Price"
-              className="rounded-full !border-2 !border-white/50 text-white placeholder-white"
+              className="rounded-full !border-2 !border-white/50 text-white placeholder:text-white"
               {...register("price", {
                 required: "Price is required",
                 min: { value: 1, message: "Price must be at least 1" },
@@ -180,7 +176,7 @@ export function AddFood({ onFoodAdded,onCategoryAdded }) {
             <Input
               type="number"
               placeholder="Rating (1-5)"
-              className="rounded-full !border-2 !border-white/50 text-white placeholder-white"
+              className="rounded-full !border-2 !border-white/50 text-white placeholder:text-white"
               {...register("rating", {
                 required: "Rating is required",
                 min: { value: 1, message: "Min rating is 1" },
