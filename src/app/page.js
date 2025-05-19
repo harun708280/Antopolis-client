@@ -1,4 +1,3 @@
-
 import BestPeople from "@/components/section/BestPepole";
 import Feedback from "@/components/section/Feedback";
 import DemoFooter from "@/components/section/Footer";
@@ -7,17 +6,15 @@ import Member from "@/components/section/Member";
 
 import Product from "@/components/section/Product";
 
-
-
 export default function Home() {
   return (
     <div>
-    <Hero/>
-      <Product/>
-   <Feedback/>
-   <Member/>
-   <BestPeople/>
-   <DemoFooter/>
+      <Hero />
+      <Product />
+      <Feedback />
+      <Member />
+      <BestPeople />
+      <DemoFooter />
     </div>
   );
 }

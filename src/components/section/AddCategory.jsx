@@ -15,6 +15,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { toast } from 'sonner';
 
 const schema = yup.object().shape({
   categoryName: yup.string().required('Category name is required'),
@@ -35,11 +36,22 @@ export function AddCategory({onCategoryAdded}) {
       const res = await axios.post('http://localhost:5000/api/categories', {
         name: data.categoryName,
       });
-      console.log('Category saved:', res.data);
+    
       onCategoryAdded()
       reset(); 
+      toast.success('Category added!', {
+        style: {
+          border: '1px solid red',
+          color: 'red',
+        },
+      });
     } catch (err) {
-      console.error('Error saving category:', err);
+     toast.error('Failed to add category', {
+        style: {
+          border: '1px solid red',
+          color: 'red',
+        },
+      });
     }
   };
 
@@ -71,7 +83,7 @@ export function AddCategory({onCategoryAdded}) {
 
           <DialogFooter className="w-full">
             <Button
-              className="w-full rounded-full bg-orange-700"
+              className="w-full rounded-full bg-orange-700 hover:bg-orange-800"
               type="submit"
               disabled={isSubmitting}
             >

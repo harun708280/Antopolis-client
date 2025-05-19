@@ -14,11 +14,11 @@ const BestPeople = () => {
   ];
 
   return (
-    <div className="max-w-[1299px] mx-auto py-10 text-center">
+    <div className="max-w-[1299px] mx-auto md:py-10 text-center">
       <h3 className="text-[#A52A2A] font-bold text-base mb-2">
         Partners & Clients
       </h3>
-      <h2 className="text-[#333333] font-bold text-5xl mb-6">
+      <h2 className="text-[#333333] font-bold text-3xl md:text-5xl mb-6">
         We work with the best people
       </h2>
 

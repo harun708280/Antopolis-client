@@ -14,7 +14,7 @@ import Image from "next/image";
 const DemoFooter = () => {
   return (
     <footer className="bg-[#880808] text-white">
-      <div className="max-w-[1299px] mx-auto px-4 py-20 flex flex-wrap justify-between gap-8">
+      <div className="max-w-[1299px] mx-auto px-4 py-10  md:py-20 flex flex-wrap justify-between gap-8">
         {/* Newsletter */}
         <div>
           <h2 className="text-xl font-bold mb-4">RESTAURANT</h2>
@@ -32,17 +32,17 @@ const DemoFooter = () => {
             </button>
           </div>
           <div className="flex space-x-3 mt-4 text-xl">
-            <Image src='/p.png' alt="logo" width={40} height={40}/>
-            <Image src='/twiter.png' alt="logo" width={40} height={40}/>
-            <Image src='/fb.png' alt="logo" width={50} height={50}/>
-            <Image src='/ins.png' alt="logo" width={40} height={40}/>
-            <Image src='/you.png' alt="logo" width={40} height={40}/>
+            <Image src="/p.png" alt="logo" width={40} height={40} />
+            <Image src="/twiter.png" alt="logo" width={40} height={40} />
+            <Image src="/fb.png" alt="logo" width={50} height={50} />
+            <Image src="/ins.png" alt="logo" width={40} height={40} />
+            <Image src="/you.png" alt="logo" width={40} height={40} />
           </div>
         </div>
 
         {/* Contact Us */}
         <div>
-          <h2 className="text-lg font-bold mb-4">Contact us</h2>
+          <h2 className="text-[20px] font-bold mb-4">Contact us</h2>
           <p className="flex items-center gap-2 mb-2 text-base-200">
             <MapPin className="text-2xl" /> 3517 W. Gray St. Utica, Pennsylvania
             57867
@@ -61,7 +61,7 @@ const DemoFooter = () => {
         {/* Links */}
         <div>
           <h2 className="text-lg font-bold mb-4">Links</h2>
-          <ul className="space-y-2 text-base-200">
+          <ul className="space-y-2 text-base-200 flex md:flex-col flex-wrap gap-3 md:gap-0">
             <li>
               <a href="#" className="hover:underline">
                 About us
@@ -94,10 +94,10 @@ const DemoFooter = () => {
         <div className="lg:w-[300px]">
           <h2 className="text-lg font-bold mb-4">Instagram Gallery</h2>
           <div className="grid grid-cols-3 gap-2">
-            {[...Array(6)].map((_, i) => (
+            {[1, 2, 3, 4, 5, 6].map((i) => (
               <Image
                 key={i}
-                src="https://cdn.pixabay.com/photo/2020/10/05/19/55/hamburger-5630646_640.jpg"
+                src={`/i${i}.jpg`}
                 alt={`Gallery ${i}`}
                 width={100}
                 height={100}
@@ -112,7 +112,7 @@ const DemoFooter = () => {
       <div className="bg-[#A52A2A]  text-sm py-4 text-center f">
         <div className="max-w-[1299px] mx-auto flex flex-col md:flex-row justify-between items-center px-4 text-base-200 ">
           <p>Copyright © 2025. All rights reserved</p>
-          <div className="space-x-4 mt-2 md:mt-0">
+          <div className="space-x-4 mt-2 md:mt-0 hidden md:block">
             <a href="#" className="hover:underline">
               Privacy Policy
             </a>

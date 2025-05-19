@@ -4,19 +4,19 @@ import Image from 'next/image';
 
 const teamMembers = [
   {
-    name: 'Mark Henry',
+    name: 'Lucky Helen',
     role: 'Owner',
-    image: '/member.png',
+    image: '/m7.jpg',
   },
   {
-    name: 'Lucky Helen',
+    name: 'Mark Henry',
     role: 'Chef',
-    image: '/member.png',
+    image: '/m9.jpg',
   },
   {
     name: 'Moon Henry',
     role: 'Founder',
-    image: '/member.png',
+    image: '/m8.jpg',
   },
   {
     name: 'Tom Morrow',
@@ -29,7 +29,7 @@ const Member = () => {
   return (
     <div className="relative -mt-1">
       {/* Background Image Section with Overlay */}
-      <div className="relative h-[400px] w-full">
+      <div className="relative h-[200] md:h-[400px] w-full">
         <Image
           src="/Bg.png"
           alt="Team Background"
@@ -39,15 +39,14 @@ const Member = () => {
         />
         <div className="absolute inset-0  bg-opacity-10 flex flex-col justify-center items-center text-white text-center px-4">
           <h2 className="text-3xl font-bold mb-2">Team Member</h2>
-          <p className="text-sm max-w-md">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Varius sed
-            pharetra dictum neque massa congue.
+          <p className="text-sm max-w-md ">
+             Our dedicated team works with passion and care to serve you the finest dining experience every day.
           </p>
         </div>
       </div>
 
       {/* Team Members */}
-      <div className="-mt-24 z-10 relative max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 pb-12">
+      <div className="-mt-8 md:-mt-24 z-10 relative max-w-[1299px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 pb-12">
         {teamMembers.map((member, index) => (
           <div
             key={index}

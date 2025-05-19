@@ -19,8 +19,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { toast } from "sonner";
 
-export function AddFood({ onFoodAdded }) {
+export function AddFood({ onFoodAdded,onCategoryAdded }) {
   const [categories, setCategories] = useState([]);
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -43,7 +44,7 @@ export function AddFood({ onFoodAdded }) {
       .get("http://localhost:5000/api/allCategories")
       .then((res) => setCategories(res.data.categories || []))
       .catch((err) => console.error("Category fetch error:", err.message));
-  }, []);
+  }, [onCategoryAdded]);
 
   useEffect(() => {
     register("category", { required: "Category is required" });
@@ -51,9 +52,16 @@ export function AddFood({ onFoodAdded }) {
 
   const onSubmit = async (data) => {
     if (!image) {
-      alert("Image is required.");
+      toast.success('Image is required.', {
+        style: {
+          border: '1px solid red',
+          color: 'red',
+        },
+      });
       return;
     }
+
+    
 
     setUploading(true);
 
@@ -84,14 +92,26 @@ export function AddFood({ onFoodAdded }) {
       );
 
       if (res.status === 200 || res.status === 201) {
-        alert("Food added successfully!");
+        toast.success('Food added successfully!', {
+        style: {
+          border: '1px solid red',
+          color: 'red',
+        },
+      });
+        
         reset();
         setImage(null);
         onFoodAdded?.();
       }
     } catch (error) {
-      console.error("Upload error:", error);
-      alert("Something went wrong while uploading.");
+      
+    
+      toast.error('Something went wrong while uploading.', {
+        style: {
+          border: '1px solid red',
+          color: 'red',
+        },
+      });
     } finally {
       setUploading(false);
     }

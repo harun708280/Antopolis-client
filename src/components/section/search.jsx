@@ -62,7 +62,7 @@ const Search = () => {
   };
 
   return (
-    <div className="relative w-xl max-w-xl mx-auto mt-10 z-50">
+    <div className="relative w-[330px] md:w-md lg:w-xl md:max-w-xl mx-auto  z-50">
       <div className="relative">
         <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
         <input
@@ -80,7 +80,7 @@ const Search = () => {
           }}
           placeholder="Search..."
           className={`
-            w-full pl-10 pr-4 py-3 bg-white border border-gray-300 focus:outline-none 
+            w-full  pl-10 pr-4 py-3 bg-white border border-gray-300 focus:outline-none 
             ${isFocused ? "rounded-t-lg" : "rounded-lg"}
           `}
         />

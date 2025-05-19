@@ -64,31 +64,31 @@ const Feedback = () => {
 
   return (
     <motion.div
-      className="max-w-[1299px] flex gap-12 justify-between items-center mx-auto px-4 mt-20"
-      initial={{ opacity: 0, y: 100 }}
+      className="max-w-[1299px] flex flex-col-reverse md:flex-row gap-12 justify-between items-center mx-auto px-4 mt-10 mt:14 lg::mt-20"
+      initial={{ opacity: 0, y: 250 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      <div className="max-w-2xl relative">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-8">
+      <div className="w-full md:max-w-2xl relative">
+        <h2 className="text-3xl md:text-3xl md:5xl text-center md:text-left font-bold mb-8">
           Customer <span className="text-red-600">Feedback</span>
         </h2>
 
-        {/* Mobile navigation */}
-        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 sm:hidden z-10">
+        
+        {/* <div className="absolute left-0 top-1/2 transform -translate-y-1/2 sm:hidden z-10">
           <button onClick={handlePrev}>
             <ChevronLeft className="w-6 h-6 text-gray-600" />
           </button>
         </div>
         <div className="absolute right-0 top-1/2 transform -translate-y-1/2 sm:hidden z-10">
-          <button onClick={handleNext}>
+          <button onClick={handleNext} className="bg-white/20 w-10 h-10 lg:hidden hover:bg-white/30 p-2 rounded-full text-white">
             <ChevronRight className="w-6 h-6 text-gray-600" />
           </button>
-        </div>
+        </div> */}
 
-        {/* Feedback text */}
-        <div className="min-h-[120px] relative">
+       
+        <div className="min-h-[80px] md:min-h-[120px] relative">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={current}
@@ -123,7 +123,7 @@ const Feedback = () => {
             </div>
           </div>
 
-          <div className="flex space-x-2 mt-4 sm:mt-0">
+          <div className="flex space-x-2 mt-4 md:mt-0 mb-5 md:mb-0">
             {feedbacks.map((_, index) => (
               <span
                 key={index}

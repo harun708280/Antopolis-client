@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Search  from "./search";
-
+import Search from "./search";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const imageData = [
   {
@@ -15,20 +15,20 @@ const imageData = [
   },
   {
     id: 2,
-    thumb: "/hero4..png",
-    main: "/hero4..png",
+    thumb: "/hero6.png",
+    main: "/hero6.png",
     bgColor: "#2733a2",
   },
   {
     id: 3,
-    thumb: "/hero3.png",
-    main: "/hero3.png",
+    thumb: "/hero1.png",
+    main: "/hero1.png",
     bgColor: "#800080",
   },
   {
     id: 4,
-    thumb: "/hero4..png", // Note the double dot here, ensure it's intentional
-    main: "/hero4..png", // Note the double dot here, ensure it's intentional
+    thumb: "/hero4..png",
+    main: "/hero4..png",
     bgColor: "#008080 ",
   },
 ];
@@ -74,60 +74,69 @@ const Hero = () => {
 
   return (
     <div
-      className="relative px-12 overflow-hidden z-10 min-h-screen flex flex-col transition-colors duration-500"
+      className="relative px-4 md:px-12 overflow-hidden z-10 min-h-screen flex flex-col transition-colors duration-500"
       style={{ backgroundColor: imageData[selected].bgColor }}
     >
-      <div className="absolute top-0 left-0 w-[550px] h-[600px] bg-white/10 rounded-br-[90%] z-0"></div>
+      <div className="absolute top-0 left-0 w-[300px] md:w-[550px] h-[400px] md:h-[600px] bg-white/10 rounded-br-[90%] z-0"></div>
 
-      <header className="flex justify-between items-center px-6 py-3">
-        <h1 className="relative z-50 font-montserrat font-bold text-lg text-white">
+      <header className="flex justify-between mt-6 md:mt-9 items-center px-4 md:px-6 py-3">
+        <h1 className="relative hidden md:block z-50 font-bold text-xl md:text-2xl text-white">
           RESTAURANT
         </h1>
         <div className="relative ">
-          <Search/>
+          <Search />
         </div>
       </header>
 
-      <main className="flex  flex-1 flex-col lg:flex-row  px-6 pb-12 gap-10 relative overflow-visible">
-        <section className=" absolute top-[10%]  z-40 flex-1 w-1/2 mt-12">
-          <h2 className="text-[96px] font-montserrat font-normal mb-3 text-white">
+      <main className="flex flex-col md:flex-row flex-1 px-4 md:px-6 pb-12 gap-10 relative overflow-visible">
+        <section className="relative z-40 flex-1 w-full lg:w-1/2 mt-3   md:mt-20 space-y-5">
+          <h2 className="text-5xl md:text-[96px] font-[400px] text-white leading-tight">
             BREAKFAST
           </h2>
-          <p className="relative  z-10 font-semibold text-[20px] max-w-4xl leading-tight mb-6 text-white">
-            
-              Breakfast, often referred to as the ‘most important meal of the
-              day’,
-            
-            provides essential nutrients to kick start our day. It includes a
-            variety of foods, like fruits, cereals, dairy products, and proteins,
-            that contribute to a balanced diet.
+          <p className="relative z-10 font-medium text-base md:text-lg max-w-3xl leading-tight text-white">
+            Breakfast, often referred to as the ‘most important meal of the
+            day’, provides essential nutrients to kick start our day. It
+            includes a variety of foods, like fruits, cereals, dairy products,
+            and proteins, that contribute to a balanced diet.
           </p>
 
-          <div className="relative z-10 flex gap-4">
+          <div className=" hidden relative z-10 md:flex gap-4 mt-3 ">
             {imageData.map((item, index) => (
               <div
                 key={item.id}
                 className="flex flex-col items-center cursor-pointer"
                 onClick={() => handleSelect(index)}
               >
-                <div className="relative  overflow-hidden">
+                <div className="relative w-20 h-20 md:w-40 md:h-40 overflow-hidden rounded-full">
                   <img
                     src={item.thumb}
                     alt={`Thumbnail ${index}`}
-                    
-                    className="object-cover w-40 h-40 rounded-full"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 {selected === index && (
-                  <div className="mt-1 w-10 h-[2px] bg-white rounded-full transition-all duration-300" />
+                  <div className="mt-1 w-6 md:w-10 h-[2px] bg-white rounded-full transition-all duration-300" />
                 )}
               </div>
             ))}
           </div>
         </section>
 
-        <section className="-right-[0%] bottom-[2%]  absolute  z-40 flex-1 max-w-[1/2] ">
-          <div className="  flex justify-end w-[600px] h-[600px] ">
+        <section className="absolute bottom-[30%] md:bottom-[5%] md:right-[10%]  lg:bottom-[2%] lg:right-0 z-40 w-[300px] h-[300px] md:w-[600px] md:h-[600px]">
+          <div className="w-full h-full relative flex gap-4 items-center">
+            <button
+              onClick={() => {
+                const newIndex = selected > 0 ? selected - 1 : 0;
+                if (newIndex !== selected) {
+                  setPrevSelected(selected);
+                  setSelected(newIndex);
+                }
+              }}
+              className="bg-white/20 w-10 h-10 lg:hidden hover:bg-white/30 p-2 rounded-full text-white"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
             <AnimatePresence custom={getDirection()} mode="wait">
               <motion.div
                 key={selected}
@@ -136,7 +145,7 @@ const Hero = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="absolute w-full h-full"
+                className="w-full h-full relative"
               >
                 <Image
                   src={imageData[selected].main}
@@ -146,11 +155,44 @@ const Hero = () => {
                 />
               </motion.div>
             </AnimatePresence>
+            <button
+              onClick={() => {
+                const newIndex =
+                  selected < imageData.length - 1 ? selected + 1 : selected;
+                if (newIndex !== selected) {
+                  setPrevSelected(selected);
+                  setSelected(newIndex);
+                }
+              }}
+              className="bg-white/20 lg:hidden w-10 h-10 hover:bg-white/30 p-2 rounded-full text-white"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </div>
         </section>
+        <div className=" relative z-10 flex md:hidden gap-1 ">
+          {imageData.map((item, index) => (
+            <div
+              key={item.id}
+              className="flex flex-col items-center cursor-pointer"
+              onClick={() => handleSelect(index)}
+            >
+              <div className="relative w-20 h-20 md:w-40 md:h-40 overflow-hidden rounded-full">
+                <img
+                  src={item.thumb}
+                  alt={`Thumbnail ${index}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {selected === index && (
+                <div className="mt-1 w-6 md:w-10 h-[2px] bg-white rounded-full transition-all duration-300" />
+              )}
+            </div>
+          ))}
+        </div>
       </main>
 
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-tl-[90%] z-0"></div>
+      <div className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-white/10 rounded-tl-[90%] z-0"></div>
     </div>
   );
 };
