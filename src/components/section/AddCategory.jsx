@@ -20,7 +20,7 @@ const schema = yup.object().shape({
   categoryName: yup.string().required('Category name is required'),
 });
 
-export function AddCategory() {
+export function AddCategory({onCategoryAdded}) {
   const {
     register,
     handleSubmit,
@@ -36,7 +36,8 @@ export function AddCategory() {
         name: data.categoryName,
       });
       console.log('Category saved:', res.data);
-      reset(); // reset form after success
+      onCategoryAdded()
+      reset(); 
     } catch (err) {
       console.error('Error saving category:', err);
     }

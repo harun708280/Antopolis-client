@@ -1,6 +1,7 @@
 
 import BestPeople from "@/components/section/BestPepole";
 import Feedback from "@/components/section/Feedback";
+import DemoFooter from "@/components/section/Footer";
 import Hero from "@/components/section/Hero";
 import Member from "@/components/section/Member";
 
@@ -16,6 +17,7 @@ export default function Home() {
    <Feedback/>
    <Member/>
    <BestPeople/>
+   <DemoFooter/>
     </div>
   );
 }

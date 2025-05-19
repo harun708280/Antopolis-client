@@ -17,6 +17,7 @@
     "axios": "^1.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
     "formik": "^2.4.6",
     "framer-motion": "^12.12.1",
     "lucide-react": "^0.511.0",
@@ -26,6 +27,7 @@
     "react-dom": "^19.0.0",
     "react-fast-marquee": "^1.6.5",
     "react-hook-form": "^7.56.4",
+    "react-rating": "^2.0.5",
     "react-responsive-carousel": "^3.2.23",
     "tailwind-merge": "^3.3.0",
     "yup": "^1.6.1"

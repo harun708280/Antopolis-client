@@ -3,31 +3,33 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Search  from "./search";
+
 
 const imageData = [
   {
     id: 1,
     thumb: "/hero1.png",
     main: "/hero1.png",
-    bgColor: "#a52b2a",
+    bgColor: "#8B0000",
   },
   {
     id: 2,
     thumb: "/hero4..png",
     main: "/hero4..png",
-    bgColor: "#8B0000",
+    bgColor: "#2733a2",
   },
   {
     id: 3,
     thumb: "/hero3.png",
     main: "/hero3.png",
-    bgColor: "#6A0DAD",
+    bgColor: "#800080",
   },
   {
     id: 4,
     thumb: "/hero4..png", // Note the double dot here, ensure it's intentional
     main: "/hero4..png", // Note the double dot here, ensure it's intentional
-    bgColor: "#2E8B57",
+    bgColor: "#008080 ",
   },
 ];
 
@@ -49,7 +51,7 @@ const Hero = () => {
 
   const imageVariants = {
     enter: (direction) => ({
-      x: direction === 1 ? 250 : -250,
+      x: direction === 1 ? 250 : -150,
       y: direction === 1 ? -150 : 150,
       opacity: 0,
       rotate: direction === 1 ? 20 : -20,
@@ -65,7 +67,7 @@ const Hero = () => {
         type: "spring",
         stiffness: 60,
         damping: 18,
-        duration: 0.9,
+        duration: 0.25,
       },
     },
   };
@@ -81,14 +83,8 @@ const Hero = () => {
         <h1 className="relative z-50 font-montserrat font-bold text-lg text-white">
           RESTAURANT
         </h1>
-        <div className="relative w-72 max-w-full">
-          <i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-black text-lg"></i>
-          <input
-            type="text"
-            placeholder="Search...."
-            aria-label="Search"
-            className="w-full rounded-xl py-2 pl-9 pr-4 font-bold text-sm font-openSans"
-          />
+        <div className="relative ">
+          <Search/>
         </div>
       </header>
 

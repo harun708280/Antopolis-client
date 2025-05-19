@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -65,12 +63,19 @@ const Feedback = () => {
   };
 
   return (
-    <div className="max-w-[1299px] flex gap-12 justify-between items-center mx-auto px-4 mt-20">
-      <div className="max-w-2xl   relative ">
+    <motion.div
+      className="max-w-[1299px] flex gap-12 justify-between items-center mx-auto px-4 mt-20"
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <div className="max-w-2xl relative">
         <h2 className="text-4xl sm:text-5xl font-bold mb-8">
           Customer <span className="text-red-600">Feedback</span>
         </h2>
 
+        {/* Mobile navigation */}
         <div className="absolute left-0 top-1/2 transform -translate-y-1/2 sm:hidden z-10">
           <button onClick={handlePrev}>
             <ChevronLeft className="w-6 h-6 text-gray-600" />
@@ -82,6 +87,7 @@ const Feedback = () => {
           </button>
         </div>
 
+        {/* Feedback text */}
         <div className="min-h-[120px] relative">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -101,6 +107,7 @@ const Feedback = () => {
           </AnimatePresence>
         </div>
 
+        {/* User info and dots */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <img
@@ -132,17 +139,23 @@ const Feedback = () => {
           </div>
         </div>
       </div>
+
+      {/* Right side image with background */}
       <div
-        className=""
         style={{
           backgroundImage: `url('/Vector 2.png')`,
-          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
+          backgroundPosition: "bottom",
         }}
       >
-        <Image src={"/Chef making .png"} height={600} width={600}></Image>
+        <Image
+          src={"/Chef making .png"}
+          alt="img"
+          height={600}
+          width={600}
+        />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,7 +1,7 @@
-'use client';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useForm } from 'react-hook-form';
+"use client";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function AddFood() {
+export function AddFood({ onFoodAdded }) {
   const [categories, setCategories] = useState([]);
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -34,7 +34,7 @@ export function AddFood() {
     clearErrors,
   } = useForm({
     defaultValues: {
-      category: '',
+      category: "",
     },
   });
 
@@ -58,7 +58,7 @@ export function AddFood() {
     setUploading(true);
 
     const formData = new FormData();
-    formData.append('image', image);
+    formData.append("image", image);
 
     try {
       const imgRes = await axios.post(
@@ -71,18 +71,23 @@ export function AddFood() {
       const foodData = {
         name: data.foodName,
         category: data.category,
+        price: parseFloat(data.price),
+        rating: parseFloat(data.rating),
         image: imageUrl,
       };
 
       console.log(foodData);
-      
 
-      const res = await axios.post("http://localhost:5000/api/addFood", foodData);
+      const res = await axios.post(
+        "http://localhost:5000/api/addFood",
+        foodData
+      );
 
       if (res.status === 200 || res.status === 201) {
         alert("Food added successfully!");
         reset();
         setImage(null);
+        onFoodAdded?.();
       }
     } catch (error) {
       console.error("Upload error:", error);
@@ -111,7 +116,9 @@ export function AddFood() {
               {...register("foodName", { required: "Food name is required" })}
             />
             {errors.foodName && (
-              <p className="text-red-500 text-sm col-span-4 -mt-2">{errors.foodName.message}</p>
+              <p className="text-red-500 text-sm col-span-4 -mt-2">
+                {errors.foodName.message}
+              </p>
             )}
           </div>
 
@@ -134,9 +141,41 @@ export function AddFood() {
               </SelectContent>
             </Select>
             {errors.category && (
-              <p className="text-red-500 text-sm col-span-4 -mt-2">{errors.category.message}</p>
+              <p className="text-red-500 text-sm col-span-4 -mt-2">
+                {errors.category.message}
+              </p>
             )}
           </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <Input
+              type="number"
+              placeholder="Price"
+              className="rounded-full !border-2 !border-white/50 text-white placeholder-white"
+              {...register("price", {
+                required: "Price is required",
+                min: { value: 1, message: "Price must be at least 1" },
+              })}
+            />
+            <Input
+              type="number"
+              placeholder="Rating (1-5)"
+              className="rounded-full !border-2 !border-white/50 text-white placeholder-white"
+              {...register("rating", {
+                required: "Rating is required",
+                min: { value: 1, message: "Min rating is 1" },
+                max: { value: 5, message: "Max rating is 5" },
+              })}
+            />
+          </div>
+          {errors.price && (
+            <p className="text-red-500 text-sm -mt-2">{errors.price.message}</p>
+          )}
+          {errors.rating && (
+            <p className="text-red-500 text-sm -mt-2">
+              {errors.rating.message}
+            </p>
+          )}
 
           <div className="grid grid-cols-4 items-center gap-4">
             <div className="col-span-4 border-dashed bg-orange-600/40 border-2 border-orange-600 rounded-full p-2 text-center">
@@ -147,7 +186,9 @@ export function AddFood() {
                 type="file"
                 id="image"
                 accept="image/*"
-                onChange={(e) => setImage(e.target.files ? e.target.files[0] : null)}
+                onChange={(e) =>
+                  setImage(e.target.files ? e.target.files[0] : null)
+                }
                 className="hidden"
               />
             </div>
