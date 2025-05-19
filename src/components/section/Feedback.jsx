@@ -65,13 +65,13 @@ const Feedback = () => {
 
   return (
     <motion.div
-      className="max-w-[1299px] flex flex-col-reverse md:flex-row gap-12 justify-between items-center mx-auto px-4 mt-10 mt:14 lg::mt-20"
+      className="max-w-[1299px]  flex flex-col-reverse md:flex-row gap-14 justify-between items-center mx-auto px-4  mt-10 mt:14 lg:mt-20"
       initial={{ opacity: 0, y: 250 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      <div className="w-full md:max-w-2xl relative">
+      <div className="w-full md:max-w-2xl  relative">
         <h2 className="text-3xl md:text-3xl lg:text-5xl text-center md:text-left font-bold mb-8">
           Customer <span className="text-red-600">Feedback</span>
         </h2>
@@ -108,7 +108,7 @@ const Feedback = () => {
           </AnimatePresence>
         </div>
 
-        {/* User info and dots */}
+      
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <img
@@ -141,13 +141,14 @@ const Feedback = () => {
         </div>
       </div>
 
-      {/* Right side image with background */}
+      
       <div
         style={{
           backgroundImage: `url('/Vector 2.png')`,
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "bottom",
+          backgroundPosition: "bottom right",
         }}
+        className=""
       >
         <Image
           src={"/Chef making .png"}
