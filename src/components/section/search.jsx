@@ -14,7 +14,7 @@ const Search = () => {
   const [loading, setLoading] = useState(true);
   const [isFocused, setIsFocused] = useState(false); // focus state
 
-  // Fetch all foods on mount
+  
   useEffect(() => {
     const fetchAllFoods = async () => {
       try {
@@ -30,7 +30,7 @@ const Search = () => {
     fetchAllFoods();
   }, []);
 
-  // Search foods on query change (debounced)
+  
   useEffect(() => {
     const fetchFoods = async () => {
       try {
