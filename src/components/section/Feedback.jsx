@@ -8,23 +8,24 @@ import Image from "next/image";
 const feedbacks = [
   {
     name: "Tayyab Sohail",
-    role: "UX/UI Designer",
+    role: "Food Critic",
     feedback: `Fresh, flavorful, and just the right amount of heat. The tuna was buttery, the rice well-seasoned, and the chili mayo added a great kick. A must-try for sushi lovers.`,
     image: "https://i.pravatar.cc/100?img=1",
   },
   {
     name: "Ayesha Khan",
-    role: "Frontend Developer",
+    role: "Regular Customer",
     feedback: `Absolutely loved it! The presentation was stunning and the flavors were even better. Will definitely order again.`,
     image: "https://i.pravatar.cc/100?img=2",
   },
   {
     name: "John Doe",
-    role: "Product Manager",
+    role: "Food Blogger",
     feedback: `A delightful experience overall. The freshness of the ingredients really stood out.`,
     image: "https://i.pravatar.cc/100?img=3",
   },
 ];
+
 
 const Feedback = () => {
   const [current, setCurrent] = useState(0);
@@ -71,7 +72,7 @@ const Feedback = () => {
       viewport={{ once: true }}
     >
       <div className="w-full md:max-w-2xl relative">
-        <h2 className="text-3xl md:text-3xl md:5xl text-center md:text-left font-bold mb-8">
+        <h2 className="text-3xl md:text-3xl lg:text-5xl text-center md:text-left font-bold mb-8">
           Customer <span className="text-red-600">Feedback</span>
         </h2>
 

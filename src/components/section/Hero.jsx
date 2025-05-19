@@ -29,7 +29,7 @@ const imageData = [
     id: 4,
     thumb: "/hero4..png",
     main: "/hero4..png",
-    bgColor: "#006666 ",
+    bgColor: "#006666",
   },
 ];
 
@@ -50,32 +50,43 @@ const Hero = () => {
   };
 
   const imageVariants = {
-    enter: (direction) => ({
-      x: direction === 1 ? 250 : -150,
-      y: direction === 1 ? -150 : 150,
-      opacity: 0,
-      rotate: direction === 1 ? 20 : -20,
-      scale: 0.92,
-    }),
-    center: {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      rotate: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 60,
-        damping: 18,
-        duration: 0.25,
-      },
+  enter: (direction) => ({
+    x: direction === 1 ? 300 : -300,
+    y: direction === 1 ? -180 : 180,
+    opacity: 0,
+    rotate: direction === 1 ? 30 : -30,
+    scale: 0.9,
+  }),
+  center: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    rotate: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 14,
+      mass: 0.8,
+      duration: 0.4,
     },
-  };
+  },
+  exit: (direction) => ({
+    x: direction === 1 ? -200 : 200,
+    y: direction === 1 ? 100 : -100,
+    opacity: 0,
+    rotate: direction === 1 ? -15 : 15,
+    scale: 0.95,
+    transition: { duration: 0.3 },
+  }),
+};
+
 
   return (
-    <div
-      className="relative px-4 md:px-12 overflow-hidden z-10 min-h-screen flex flex-col transition-colors duration-500"
-      style={{ backgroundColor: imageData[selected].bgColor }}
+    <motion.div
+      className="relative px-4 md:px-12 overflow-hidden z-10 min-h-screen flex flex-col"
+      animate={{ backgroundColor: imageData[selected].bgColor }}
+      transition={{ duration: 0.6 }}
     >
       <div className="absolute top-0 left-0 w-[300px] md:w-[550px] h-[400px] md:h-[600px] bg-white/10 rounded-br-[90%] z-0"></div>
 
@@ -83,13 +94,13 @@ const Hero = () => {
         <h1 className="relative hidden md:block z-50 font-bold text-xl md:text-2xl text-white">
           RESTAURANT
         </h1>
-        <div className="relative ">
+        <div className="relative">
           <Search />
         </div>
       </header>
 
       <main className="flex flex-col md:flex-row flex-1 px-4 md:px-6 pb-12 gap-10 relative overflow-visible">
-        <section className="relative z-40 flex-1 w-full lg:w-1/2 mt-3   md:mt-20 space-y-5">
+        <section className="relative z-40 flex-1 w-full lg:w-1/2 mt-3 md:mt-20 space-y-5">
           <h2 className="text-5xl md:text-[96px] font-[400px] text-white leading-tight">
             BREAKFAST
           </h2>
@@ -100,29 +111,42 @@ const Hero = () => {
             and proteins, that contribute to a balanced diet.
           </p>
 
-          <div className=" hidden relative z-10 md:flex gap-4 mt-3 ">
-            {imageData.map((item, index) => (
-              <div
-                key={item.id}
-                className="flex flex-col items-center cursor-pointer"
-                onClick={() => handleSelect(index)}
-              >
-                <div className="relative w-20 h-20 md:w-40 md:h-40 overflow-hidden rounded-full">
-                  <img
-                    src={item.thumb}
-                    alt={`Thumbnail ${index}`}
-                    className="w-full h-full object-cover"
-                  />
+          <div className="hidden relative z-10 md:flex gap-4 mt-3">
+            {imageData.map((item, index) => {
+              const isSelectable = Math.abs(index - selected) === 1;
+              return (
+                <div
+                  key={item.id}
+                  className={`flex flex-col items-center ${
+                    isSelectable ? "cursor-pointer opacity-100" : "opacity-60"
+                  }`}
+                  onClick={() => handleSelect(index)}
+                >
+                  <div className="relative w-20 h-20 md:w-40 md:h-40 overflow-hidden rounded-full">
+                    <img
+                      src={item.thumb}
+                      alt={`Thumbnail ${index}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  {selected === index && (
+                    <motion.div
+                      layoutId="underline"
+                      className="mt-1 w-6 md:w-10 h-[2px] bg-white rounded-full"
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      }}
+                    />
+                  )}
                 </div>
-                {selected === index && (
-                  <div className="mt-1 w-6 md:w-10 h-[2px] bg-white rounded-full transition-all duration-300" />
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
-        <section className="absolute bottom-[30%] md:bottom-[5%] md:right-[10%]  lg:bottom-[2%] lg:right-0 z-40 w-[300px] h-[300px] md:w-[600px] md:h-[600px]">
+        <section className="absolute bottom-[30%] md:bottom-[5%] md:right-[20%] lg:bottom-[2%] lg:right-0 z-40 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[550px] lg:h-[550px]">
           <div className="w-full h-full relative flex gap-4 items-center">
             <button
               onClick={() => {
@@ -132,7 +156,7 @@ const Hero = () => {
                   setSelected(newIndex);
                 }
               }}
-              className="bg-white/20 w-10 h-10 lg:hidden hover:bg-white/30 p-2 rounded-full text-white"
+              className="bg-white/20 w-10 h-10 md:hidden hover:bg-white/30 p-2 rounded-full text-white"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -155,6 +179,7 @@ const Hero = () => {
                 />
               </motion.div>
             </AnimatePresence>
+
             <button
               onClick={() => {
                 const newIndex =
@@ -164,36 +189,50 @@ const Hero = () => {
                   setSelected(newIndex);
                 }
               }}
-              className="bg-white/20 lg:hidden w-10 h-10 hover:bg-white/30 p-2 rounded-full text-white"
+              className="bg-white/20 md:hidden w-10 h-10 hover:bg-white/30 p-2 rounded-full text-white"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
         </section>
-        <div className=" relative z-10 flex md:hidden gap-1 ">
-          {imageData.map((item, index) => (
-            <div
-              key={item.id}
-              className="flex flex-col items-center cursor-pointer"
-              onClick={() => handleSelect(index)}
-            >
-              <div className="relative w-20 h-20 md:w-40 md:h-40 overflow-hidden rounded-full">
-                <img
-                  src={item.thumb}
-                  alt={`Thumbnail ${index}`}
-                  className="w-full h-full object-cover"
-                />
+
+        <div className="relative z-10 flex md:hidden gap-1">
+          {imageData.map((item, index) => {
+            const isSelectable = Math.abs(index - selected) === 1;
+            return (
+              <div
+                key={item.id}
+                className={`flex flex-col items-center ${
+                  isSelectable ? "cursor-pointer opacity-100" : "opacity-60"
+                }`}
+                onClick={() => handleSelect(index)}
+              >
+                <div className="relative w-20 h-20 md:w-40 md:h-40 overflow-hidden rounded-full">
+                  <img
+                    src={item.thumb}
+                    alt={`Thumbnail ${index}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {selected === index && (
+                  <motion.div
+                    layoutId="underline"
+                    className="mt-1 w-6 md:w-10 h-[2px] bg-white rounded-full"
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                      damping: 30,
+                    }}
+                  />
+                )}
               </div>
-              {selected === index && (
-                <div className="mt-1 w-6 md:w-10 h-[2px] bg-white rounded-full transition-all duration-300" />
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </main>
 
       <div className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-white/10 rounded-tl-[90%] z-0"></div>
-    </div>
+    </motion.div>
   );
 };
 
