@@ -51,7 +51,7 @@ const Hero = () => {
 
   const imageVariants = {
   enter: (direction) => ({
-    x: direction === 1 ? 300 : -300,
+    x: direction === 1 ? 300 : -150,
     y: direction === 1 ? -180 : 180,
     opacity: 0,
     rotate: direction === 1 ? 30 : -30,

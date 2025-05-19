@@ -80,7 +80,7 @@ const Search = () => {
           }}
           placeholder="Search..."
           className={`
-            w-full  pl-10 pr-4 py-3 bg-white border border-gray-300 focus:outline-none 
+            w-full placeholder:text-[#2D2D2D] placeholder:font-bold placeholder:text-xl pl-10 pr-4 py-3 bg-white border border-gray-300 focus:outline-none 
             ${isFocused ? "rounded-t-lg" : "rounded-lg"}
           `}
         />
