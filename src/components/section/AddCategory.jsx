@@ -33,7 +33,7 @@ export function AddCategory({onCategoryAdded}) {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/categories', {
+      const res = await axios.post('https://antopolis-server-two.vercel.app/api/categories', {
         name: data.categoryName,
       });
     

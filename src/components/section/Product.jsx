@@ -24,7 +24,7 @@ const Product = () => {
 
   const fetchDishes = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/allFoods");
+      const response = await axios.get("https://antopolis-server-two.vercel.app/api/allFoods");
       if (response.data && response.data.foods) {
         setDishes(response.data.foods);
       } else {
@@ -38,7 +38,7 @@ const Product = () => {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/allCategories"
+        "https://antopolis-server-two.vercel.app/api/allCategories"
       );
       if (response.data && response.data.categories) {
         setCategories(["All", ...response.data.categories.map((cat) => cat.name)]);

@@ -17,19 +17,19 @@ const imageData = [
     id: 2,
     thumb: "/hero6.png",
     main: "/hero6.png",
-    bgColor: "#2733a2",
+    bgColor: "#0a4669",
   },
   {
     id: 3,
     thumb: "/hero1.png",
     main: "/hero1.png",
-    bgColor: "#800080",
+    bgColor: "#953553",
   },
   {
     id: 4,
     thumb: "/hero4..png",
     main: "/hero4..png",
-    bgColor: "#008080 ",
+    bgColor: "#006666 ",
   },
 ];
 

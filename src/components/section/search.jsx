@@ -18,7 +18,7 @@ const Search = () => {
   useEffect(() => {
     const fetchAllFoods = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/allFoods");
+        const res = await axios.get("https://antopolis-server-two.vercel.app/api/allFoods");
         setAllFoods(res.data.foods);
         setResults(res.data.foods);
       } catch (error) {
@@ -39,7 +39,7 @@ const Search = () => {
           return;
         }
 
-        const res = await axios.get(`http://localhost:5000/api/search?name=${query}`);
+        const res = await axios.get(`https://antopolis-server-two.vercel.app/api/search?name=${query}`);
         setResults(res.data.foods);
       } catch (error) {
         console.error("Search error:", error);

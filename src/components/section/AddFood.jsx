@@ -41,7 +41,7 @@ export function AddFood({ onFoodAdded,onCategoryAdded }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/allCategories")
+      .get("https://antopolis-server-two.vercel.app/api/allCategories")
       .then((res) => setCategories(res.data.categories || []))
       .catch((err) => console.error("Category fetch error:", err.message));
   }, [onCategoryAdded]);
@@ -87,7 +87,7 @@ export function AddFood({ onFoodAdded,onCategoryAdded }) {
       console.log(foodData);
 
       const res = await axios.post(
-        "http://localhost:5000/api/addFood",
+        "https://antopolis-server-two.vercel.app/api/addFood",
         foodData
       );
 
